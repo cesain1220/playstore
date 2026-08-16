@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Play Store - Mis Apps</title>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Hoja de Estilos -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="#" class="logo-container">
+      <svg class="play-logo" viewBox="0 0 512 512">
+        <path fill="#4153b7" d="M12 28.5L273 289.5 12 550.5z"/>
+        <path fill="#00b0ff" d="M12 28.5l261 261L12 550.5V28.5z"/>
+        <path fill="#00e676" d="M374 188.5l-101 101 101 101 88-51c15-9 25-26 25-45s-10-36-25-45l-88-61z"/>
+        <path fill="#ff3d00" d="M12 550.5l261-261 101 101-286 165c-20 12-46 7-60-11-8-11-12-25-16-39z"/>
+        <path fill="#ffc107" d="M12 28.5l374 216 88-61c15-9 25-26 25-45s-10-36-25-45L188 7.5C138-21.5 61 8.5 24 58.5c-7 9-10 19-12 30z"/>
+      </svg>
+      <span class="brand-title">Google Play</span>
+    </a>
+
+    <div class="search-container">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Buscar aplicaciones...">
+    </div>
+
+    <div class="user-avatar">A</div>
+  </header>
+
+  <!-- Pestañas -->
+  <nav class="sub-nav">
+    <button class="tab-btn" data-category="juegos">Juegos</button>
+    <button class="tab-btn active" data-category="apps">Aplicaciones</button>
+    <button class="tab-btn" data-category="studio">Android Studio</button>
+  </nav>
+
+  <!-- Contenido Principal -->
+  <main class="main-container">
+
+    <div class="banner-demo">
+      <i class="fa-solid fa-circle-check"></i>
+      <span>Selecciona una aplicación para ver detalles o descargar su APK directamente.</span>
+    </div>
+
+    <h2 class="section-header" id="categoryTitle">Aplicaciones Destacadas</h2>
+
+    <div class="apps-grid" id="appsGrid">
+
+      <!-- APP 1: DRIVE SELECT -->
+      <div class="app-card" 
+           data-category="apps studio"
+           data-title="Drive Select"
+           data-dev="Proyecto Android Studio"
+           data-rating="4.9"
+           data-reviews="142"
+           data-size="15 MB"
+           data-desc="Drive Select es una plataforma móvil diseñada para simplificar el alquiler de vehículos. Permite a los usuarios explorar catálogo de autos disponibles, filtrar por categoría, gestionar reservas y seleccionar conductores de forma rápida, segura e intuitiva."
+           data-apk="DIRVERSELECT.apk"
+           data-logo="./imagenes/logo_drive.png"
+           data-img1="./imagenes/carro.jpeg"
+           data-img2="./imagenes/carro2.jpeg"
+           data-img3="./imagenes/carro3.jpeg"
+           data-img4="./imagenes/carro4.jpeg">
+        <img src="./imagenes/logo_drive.png" alt="Drive Select" class="app-icon-img">
+        <div class="app-details">
+          <div>
+            <h3 class="app-name">Drive Select</h3>
+            <p class="app-developer">Proyecto Android Studio</p>
+            <div class="app-stats">
+              <span class="rating">4.9 <i class="fa-solid fa-star"></i></span>
+              <span>•</span>
+              <span>15 MB</span>
+            </div>
+          </div>
+          <a href="DIRVERSELECT.apk" download="DIRVERSELECT.apk" class="download-btn" onclick="event.stopPropagation()">
+            <i class="fa-solid fa-download"></i> Instalar APK
+          </a>
+        </div>
+      </div>
+
+      <!-- APP 2: HUELLA DIGITAL -->
+      <div class="app-card" 
+           data-category="apps studio"
+           data-title="Huella Digital"
+           data-dev="Proyecto Android Studio (Kotlin + Compose)"
+           data-rating="4.8"
+           data-reviews="98"
+           data-size="18 MB"
+           data-desc="Huella Digital es una aplicación móvil nativa para Android desarrollada en Kotlin y Jetpack Compose, orientada a la gestión eficiente de recepciones en clínicas veterinarias. Permite administrar expedientes médicos de pacientes, controlar datos de propietarios y gestionar el agendamiento e historial de citas en tiempo real con Firebase Firestore."
+           data-apk="HUELLA.apk"
+           data-logo="./imagenes/logo_chucho.png"
+           data-img1="./imagenes/chucho.jpeg"
+           data-img2="./imagenes/chucho2.jpeg"
+           data-img3="./imagenes/chcuho3.jpeg">
+        <img src="./imagenes/logo_chucho.png" alt="Huella Digital" class="app-icon-img">
+        <div class="app-details">
+          <div>
+            <h3 class="app-name">Huella Digital</h3>
+            <p class="app-developer">Recepción Veterinaria</p>
+            <div class="app-stats">
+              <span class="rating">4.8 <i class="fa-solid fa-star"></i></span>
+              <span>•</span>
+              <span>18 MB</span>
+            </div>
+          </div>
+          <a href="HUELLA.apk" download="HUELLA.apk" class="download-btn" onclick="event.stopPropagation()">
+            <i class="fa-solid fa-download"></i> Instalar APK
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="empty-msg" id="emptyMsg">
+      <i class="fa-solid fa-folder-open" style="font-size: 30px; margin-bottom: 10px;"></i>
+      <p>No se encontraron aplicaciones en esta sección.</p>
+    </div>
+  </main>
+
+  <!-- Modal Detalle App -->
+  <div class="modal-overlay" id="appModal">
+    <div class="modal-card">
+      <button class="close-modal" id="closeModal">&times;</button>
+      
+      <div class="modal-header">
+        <div id="modalIcon"></div>
+        <div class="modal-title-box">
+          <h3 id="modalTitle">--</h3>
+          <p class="modal-developer" id="modalDev">--</p>
+          <span style="font-size: 12px; color: var(--text-muted);">Contiene anuncios • Compras en la app</span>
+        </div>
+      </div>
+
+      <div class="modal-stats-bar">
+        <div class="stat-item">
+          <strong id="modalRating">-- <i class="fa-solid fa-star" style="color:#fbbc04;"></i></strong>
+          <span id="modalReviews">-- reseñas</span>
+        </div>
+        <div class="stat-item">
+          <strong id="modalSize">--</strong>
+          <span>Tamaño</span>
+        </div>
+        <div class="stat-item">
+          <strong>3+</strong>
+          <span>Clasificación</span>
+        </div>
+      </div>
+
+      <a href="#" id="modalDownloadBtn" download class="download-btn" style="width: 100%; margin-bottom: 20px;">
+        <i class="fa-solid fa-download"></i> Descargar e Instalar APK
+      </a>
+
+      <!-- Capturas de pantalla -->
+      <h4 style="margin-bottom: 10px; font-size: 16px;">Capturas de pantalla</h4>
+      <div class="modal-screenshots" id="modalScreenshots"></div>
+
+      <h4 style="margin-bottom: 8px; margin-top: 15px; font-size: 16px;">Acerca de esta app</h4>
+      <p class="modal-description" id="modalDesc">--</p>
+    </div>
+  </div>
+
+  <!-- Vista Acercada / Lightbox -->
+  <div class="lightbox-overlay" id="imageLightbox">
+    <button class="close-lightbox" id="closeLightbox">&times;</button>
+    <img src="" id="lightboxImg" alt="Captura Ampliada">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

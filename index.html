@@ -26,7 +26,7 @@
 
     <div class="search-container">
       <i class="fa-solid fa-magnifying-glass"></i>
-      <input type="text" id="searchInput" placeholder="Buscar aplicaciones...">
+      <input type="text" id="searchInput" placeholder="Buscar aplicaciones o proyectos...">
     </div>
 
     <div class="user-avatar">A</div>
@@ -44,7 +44,7 @@
 
     <div class="banner-demo">
       <i class="fa-solid fa-circle-check"></i>
-      <span>Selecciona una aplicación para ver detalles o descargar su APK directamente.</span>
+      <span>Selecciona una aplicación para ver detalles, descargar su APK o explorar su código fuente en GitHub.</span>
     </div>
 
     <h2 class="section-header" id="categoryTitle">Aplicaciones Destacadas</h2>
@@ -61,6 +61,7 @@
            data-size="15 MB"
            data-desc="Drive Select es una plataforma móvil diseñada para simplificar el alquiler de vehículos. Permite a los usuarios explorar catálogo de autos disponibles, filtrar por categoría, gestionar reservas y seleccionar conductores de forma rápida, segura e intuitiva."
            data-apk="DIRVERSELECT.apk"
+           data-repo="https://github.com/Eledwinin/DriveSelect.git"
            data-logo="./imagenes/logo_drive.png"
            data-img1="./imagenes/carro.jpeg"
            data-img2="./imagenes/carro2.jpeg"
@@ -70,16 +71,21 @@
         <div class="app-details">
           <div>
             <h3 class="app-name">Drive Select</h3>
-            <p class="app-developer">Proyecto Android Studio</p>
+            <p class="app-developer"><i class="fa-brands fa-android"></i> Proyecto Android Studio</p>
             <div class="app-stats">
               <span class="rating">4.9 <i class="fa-solid fa-star"></i></span>
               <span>•</span>
               <span>15 MB</span>
             </div>
           </div>
-          <a href="DIRVERSELECT.apk" download="DIRVERSELECT.apk" class="download-btn" onclick="event.stopPropagation()">
-            <i class="fa-solid fa-download"></i> Instalar APK
-          </a>
+          <div class="card-actions">
+            <a href="DIRVERSELECT.apk" download="DIRVERSELECT.apk" class="download-btn" onclick="event.stopPropagation()">
+              <i class="fa-solid fa-download"></i> Instalar APK
+            </a>
+            <a href="https://github.com/Eledwinin/DriveSelect.git" target="_blank" class="github-btn" onclick="event.stopPropagation()">
+              <i class="fa-brands fa-github"></i> Código
+            </a>
+          </div>
         </div>
       </div>
 
@@ -93,6 +99,7 @@
            data-size="18 MB"
            data-desc="Huella Digital es una aplicación móvil nativa para Android desarrollada en Kotlin y Jetpack Compose, orientada a la gestión eficiente de recepciones en clínicas veterinarias. Permite administrar expedientes médicos de pacientes, controlar datos de propietarios y gestionar el agendamiento e historial de citas en tiempo real con Firebase Firestore."
            data-apk="HUELLA.apk"
+           data-repo="https://github.com/Eledwinin/HuellaDigital.git"
            data-logo="./imagenes/logo_chucho.png"
            data-img1="./imagenes/chucho.jpeg"
            data-img2="./imagenes/chucho2.jpeg"
@@ -101,16 +108,21 @@
         <div class="app-details">
           <div>
             <h3 class="app-name">Huella Digital</h3>
-            <p class="app-developer">Recepción Veterinaria</p>
+            <p class="app-developer"><i class="fa-brands fa-android"></i> Recepción Veterinaria</p>
             <div class="app-stats">
               <span class="rating">4.8 <i class="fa-solid fa-star"></i></span>
               <span>•</span>
               <span>18 MB</span>
             </div>
           </div>
-          <a href="HUELLA.apk" download="HUELLA.apk" class="download-btn" onclick="event.stopPropagation()">
-            <i class="fa-solid fa-download"></i> Instalar APK
-          </a>
+          <div class="card-actions">
+            <a href="HUELLA.apk" download="HUELLA.apk" class="download-btn" onclick="event.stopPropagation()">
+              <i class="fa-solid fa-download"></i> Instalar APK
+            </a>
+            <a href="https://github.com/Eledwinin/HuellaDigital.git" target="_blank" class="github-btn" onclick="event.stopPropagation()">
+              <i class="fa-brands fa-github"></i> Código
+            </a>
+          </div>
         </div>
       </div>
 
@@ -151,9 +163,15 @@
         </div>
       </div>
 
-      <a href="#" id="modalDownloadBtn" download class="download-btn" style="width: 100%; margin-bottom: 20px;">
-        <i class="fa-solid fa-download"></i> Descargar e Instalar APK
-      </a>
+      <!-- Botones de Acción del Modal -->
+      <div class="modal-actions-container">
+        <a href="#" id="modalDownloadBtn" download class="download-btn flex-1">
+          <i class="fa-solid fa-download"></i> Descargar APK
+        </a>
+        <a href="#" id="modalGithubBtn" target="_blank" class="github-btn flex-1">
+          <i class="fa-brands fa-github"></i> Repositorio GitHub
+        </a>
+      </div>
 
       <!-- Capturas de pantalla -->
       <h4 style="margin-bottom: 10px; font-size: 16px;">Capturas de pantalla</h4>

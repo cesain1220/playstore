@@ -44,7 +44,7 @@
 
     <div class="banner-demo">
       <i class="fa-solid fa-circle-check"></i>
-      <span>Selecciona una aplicación para ver detalles, descargar su APK o explorar su código fuente en GitHub.</span>
+      <span>Selecciona una aplicación para ver detalles, descargar su APK o escanear su código QR.</span>
     </div>
 
     <h2 class="section-header" id="categoryTitle">Aplicaciones Destacadas</h2>
@@ -87,6 +87,10 @@
             </a>
           </div>
         </div>
+        <div class="card-qr-box btn-apk">
+          <img class="card-qr-img" src="" alt="QR APK">
+          <span class="qr-label">Escanear APK</span>
+        </div>
       </div>
 
       <!-- APP 2: HUELLA DIGITAL -->
@@ -123,6 +127,10 @@
               <i class="fa-brands fa-github"></i> Código
             </a>
           </div>
+        </div>
+        <div class="card-qr-box btn-apk">
+          <img class="card-qr-img" src="" alt="QR APK">
+          <span class="qr-label">Escanear APK</span>
         </div>
       </div>
 
@@ -163,14 +171,21 @@
         </div>
       </div>
 
-      <!-- Botones de Acción del Modal -->
+      <!-- Botones de Acción y QR del Modal -->
       <div class="modal-actions-container">
-        <a href="#" id="modalDownloadBtn" download class="download-btn flex-1 btn-apk">
-          <i class="fa-solid fa-download"></i> Descargar APK
-        </a>
-        <a href="#" id="modalGithubBtn" target="_blank" class="github-btn flex-1 btn-repo">
-          <i class="fa-brands fa-github"></i> Repositorio GitHub
-        </a>
+        <div class="modal-actions-left">
+          <a href="#" id="modalDownloadBtn" download class="download-btn flex-1 btn-apk">
+            <i class="fa-solid fa-download"></i> Descargar APK
+          </a>
+          <a href="#" id="modalGithubBtn" target="_blank" class="github-btn flex-1 btn-repo">
+            <i class="fa-brands fa-github"></i> Repositorio GitHub
+          </a>
+        </div>
+        
+        <div class="modal-qr-container btn-apk">
+          <img id="modalQrImg" src="" alt="QR para descargar APK">
+          <span class="qr-label">Escanea para descargar</span>
+        </div>
       </div>
 
       <!-- Capturas de pantalla -->

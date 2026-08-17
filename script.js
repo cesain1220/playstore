@@ -58,10 +58,21 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('modalSize').textContent = card.getAttribute('data-size');
       document.getElementById('modalDesc').textContent = card.getAttribute('data-desc');
 
+      // Configurar Botón Descarga APK
       const apkPath = card.getAttribute('data-apk');
       const modalDownloadBtn = document.getElementById('modalDownloadBtn');
       modalDownloadBtn.href = apkPath;
       modalDownloadBtn.setAttribute('download', apkPath);
+
+      // Configurar Botón GitHub Repo
+      const repoUrl = card.getAttribute('data-repo');
+      const modalGithubBtn = document.getElementById('modalGithubBtn');
+      if (repoUrl) {
+        modalGithubBtn.href = repoUrl;
+        modalGithubBtn.style.display = 'inline-flex';
+      } else {
+        modalGithubBtn.style.display = 'none';
+      }
 
       // Cargar Logo
       const logoUrl = card.getAttribute('data-logo');

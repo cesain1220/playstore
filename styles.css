@@ -1,6 +1,8 @@
 :root {
   --primary-color: #01875f;
   --primary-hover: #006a4a;
+  --github-color: #24292e;
+  --github-hover: #000000;
   --bg-color: #f8f9fa;
   --card-bg: #ffffff;
   --text-main: #202124;
@@ -138,7 +140,7 @@ body {
 
 .apps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 24px;
 }
 
@@ -150,11 +152,12 @@ body {
   gap: 18px;
   border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .app-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .app-icon-img, .modal-icon-img {
@@ -183,6 +186,9 @@ body {
   font-size: 13px;
   color: var(--text-muted);
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .app-stats {
@@ -203,22 +209,46 @@ body {
   color: #fbbc04;
 }
 
-.download-btn {
+.card-actions, .modal-actions-container {
+  display: flex;
+  gap: 8px;
+}
+
+.download-btn, .github-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: var(--primary-color);
-  color: white;
   text-decoration: none;
-  padding: 10px 18px;
+  padding: 10px 14px;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
+  transition: background-color 0.2s;
+}
+
+.download-btn {
+  background-color: var(--primary-color);
+  color: white;
 }
 
 .download-btn:hover {
   background-color: var(--primary-hover);
+}
+
+.github-btn {
+  background-color: var(--github-color);
+  color: white;
+}
+
+.github-btn:hover {
+  background-color: var(--github-hover);
+}
+
+.flex-1 {
+  flex: 1;
+  font-size: 14px;
+  padding: 12px;
 }
 
 .modal-overlay {
@@ -282,6 +312,10 @@ body {
   padding: 12px 0;
   margin-bottom: 20px;
   text-align: center;
+}
+
+.modal-actions-container {
+  margin-bottom: 20px;
 }
 
 .stat-item {

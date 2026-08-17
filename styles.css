@@ -211,7 +211,6 @@ body {
   color: #fbbc04;
 }
 
-/* Estilos de QR en Tarjetas */
 .card-qr-box {
   display: flex;
   flex-direction: column;
@@ -342,7 +341,6 @@ body {
   text-align: center;
 }
 
-/* Modal Actions + QR Layout */
 .modal-actions-container {
   display: flex;
   align-items: center;
@@ -374,6 +372,13 @@ body {
   border-radius: 8px;
   border: 1px solid var(--border-color);
   background: #ffffff;
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#modalQrImg:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .stat-item {
@@ -455,7 +460,6 @@ body {
   z-index: 2001;
 }
 
-/* Regla de visibilidad de elementos según pestaña activa */
 body.mode-studio .btn-apk {
   display: none !important;
 }

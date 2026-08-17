@@ -7,27 +7,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('appModal');
   const closeModal = document.getElementById('closeModal');
 
-  // Elementos para el acercamiento (Lightbox)
   const lightbox = document.getElementById('imageLightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const closeLightbox = document.getElementById('closeLightbox');
 
   let currentCategory = 'apps';
 
+  // Obtener URL base de GitHub Pages
+  const baseUrl = window.location.href.split('?')[0].split('#')[0];
+
+  // Generar QRs para cada tarjeta
+  appCards.forEach(card => {
+    const apkRelativePath = card.getAttribute('data-apk');
+    const fullApkUrl = `${baseUrl}${apkRelativePath}`;
+    
+    // Generar imagen del QR apuntando al enlace completo del APK
+    const qrApiUrl = `https://quickchart.io/qr?text=${encodeURIComponent(fullApkUrl)}&size=150`;
+    
+    const qrImg = card.querySelector('.card-qr-img');
+    if (qrImg) {
+      qrImg.src = qrApiUrl;
+    }
+  });
+
   function filterApps() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     let visibleCount = 0;
 
-    // Mostrar/Ocultar botones según la pestaña activa
-    const apkButtons = document.querySelectorAll('.btn-apk');
-    const repoButtons = document.querySelectorAll('.btn-repo');
-
     if (currentCategory === 'studio') {
-      apkButtons.forEach(btn => btn.style.display = 'none');
-      repoButtons.forEach(btn => btn.style.display = 'inline-flex');
+      document.body.classList.add('mode-studio');
     } else {
-      apkButtons.forEach(btn => btn.style.display = 'inline-flex');
-      repoButtons.forEach(btn => btn.style.display = 'none');
+      document.body.classList.remove('mode-studio');
     }
 
     appCards.forEach(card => {
@@ -70,23 +80,27 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('modalSize').textContent = card.getAttribute('data-size');
       document.getElementById('modalDesc').textContent = card.getAttribute('data-desc');
 
-      // Configurar Botón Descarga APK
+      // Configurar Descarga APK y QR del Modal
       const apkPath = card.getAttribute('data-apk');
       const modalDownloadBtn = document.getElementById('modalDownloadBtn');
       modalDownloadBtn.href = apkPath;
       modalDownloadBtn.setAttribute('download', apkPath);
 
-      // Configurar Botón GitHub Repo
+      const fullApkUrl = `${baseUrl}${apkPath}`;
+      const modalQrImg = document.getElementById('modalQrImg');
+      modalQrImg.src = `https://quickchart.io/qr?text=${encodeURIComponent(fullApkUrl)}&size=200`;
+
+      // Configurar Repo GitHub
       const repoUrl = card.getAttribute('data-repo');
       const modalGithubBtn = document.getElementById('modalGithubBtn');
       modalGithubBtn.href = repoUrl;
 
-      // Cargar Logo
+      // Configurar Logo
       const logoUrl = card.getAttribute('data-logo');
       const iconBox = document.getElementById('modalIcon');
       iconBox.innerHTML = `<img src="${logoUrl}" class="modal-icon-img" alt="Logo">`;
 
-      // Cargar Capturas de pantalla
+      // Cargar capturas
       const screenshotsContainer = document.getElementById('modalScreenshots');
       screenshotsContainer.innerHTML = '';
       
@@ -103,7 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
           imgEl.src = imgUrl;
           imgEl.className = 'screenshot-item';
           
-          // Abrir captura en pantalla grande al hacer clic
           imgEl.addEventListener('click', (e) => {
             e.stopPropagation();
             lightboxImg.src = imgUrl;
@@ -118,7 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Cerrar vista ampliada (Lightbox)
   closeLightbox.addEventListener('click', () => lightbox.style.display = 'none');
   lightbox.addEventListener('click', (e) => {
     if (e.target !== lightboxImg) {
@@ -126,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Cerrar Modal Principal
   closeModal.addEventListener('click', () => modal.style.display = 'none');
   window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
 

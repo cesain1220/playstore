@@ -140,7 +140,7 @@ body {
 
 .apps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
   gap: 24px;
 }
 
@@ -149,10 +149,12 @@ body {
   border-radius: 16px;
   padding: 20px;
   display: flex;
-  gap: 18px;
+  gap: 16px;
+  align-items: center;
   border: 1px solid var(--border-color);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
 }
 
 .app-card:hover {
@@ -161,8 +163,8 @@ body {
 }
 
 .app-icon-img, .modal-icon-img {
-  width: 80px;
-  height: 80px;
+  width: 75px;
+  height: 75px;
   border-radius: 18px;
   object-fit: cover;
   flex-shrink: 0;
@@ -185,7 +187,7 @@ body {
 .app-developer {
   font-size: 13px;
   color: var(--text-muted);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -197,7 +199,7 @@ body {
   gap: 12px;
   font-size: 13px;
   color: var(--text-muted);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .rating {
@@ -209,7 +211,33 @@ body {
   color: #fbbc04;
 }
 
-.card-actions, .modal-actions-container {
+/* Estilos de QR en Tarjetas */
+.card-qr-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px dashed var(--border-color);
+  padding-left: 12px;
+  flex-shrink: 0;
+}
+
+.card-qr-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.qr-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.card-actions {
   display: flex;
   gap: 8px;
 }
@@ -314,8 +342,38 @@ body {
   text-align: center;
 }
 
+/* Modal Actions + QR Layout */
 .modal-actions-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-bottom: 20px;
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.modal-actions-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 16px;
+  border-left: 1px solid var(--border-color);
+}
+
+#modalQrImg {
+  width: 90px;
+  height: 90px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
 }
 
 .stat-item {
@@ -346,7 +404,6 @@ body {
   color: var(--text-muted);
 }
 
-/* Vista Acercada (Lightbox) */
 .screenshot-item {
   width: 140px;
   height: 250px;
@@ -396,4 +453,21 @@ body {
   color: #ffffff;
   cursor: pointer;
   z-index: 2001;
+}
+
+/* Regla de visibilidad de elementos según pestaña activa */
+body.mode-studio .btn-apk {
+  display: none !important;
+}
+
+body.mode-studio .btn-repo {
+  display: inline-flex !important;
+}
+
+body:not(.mode-studio) .btn-apk {
+  display: flex !important;
+}
+
+body:not(.mode-studio) .btn-repo {
+  display: none !important;
 }

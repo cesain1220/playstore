@@ -10,18 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightbox = document.getElementById('imageLightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const closeLightbox = document.getElementById('closeLightbox');
+  const modalQrImg = document.getElementById('modalQrImg');
 
   let currentCategory = 'apps';
 
-  // Obtener URL base de GitHub Pages
-  const baseUrl = window.location.href.split('?')[0].split('#')[0];
+  const repoName = 'playstore';
+  const baseUrl = `${window.location.origin}/${repoName}/`;
 
-  // Generar QRs para cada tarjeta
   appCards.forEach(card => {
     const apkRelativePath = card.getAttribute('data-apk');
     const fullApkUrl = `${baseUrl}${apkRelativePath}`;
-    
-    // Generar imagen del QR apuntando al enlace completo del APK
     const qrApiUrl = `https://quickchart.io/qr?text=${encodeURIComponent(fullApkUrl)}&size=150`;
     
     const qrImg = card.querySelector('.card-qr-img');
@@ -80,27 +78,22 @@ document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('modalSize').textContent = card.getAttribute('data-size');
       document.getElementById('modalDesc').textContent = card.getAttribute('data-desc');
 
-      // Configurar Descarga APK y QR del Modal
       const apkPath = card.getAttribute('data-apk');
       const modalDownloadBtn = document.getElementById('modalDownloadBtn');
       modalDownloadBtn.href = apkPath;
       modalDownloadBtn.setAttribute('download', apkPath);
 
       const fullApkUrl = `${baseUrl}${apkPath}`;
-      const modalQrImg = document.getElementById('modalQrImg');
-      modalQrImg.src = `https://quickchart.io/qr?text=${encodeURIComponent(fullApkUrl)}&size=200`;
+      modalQrImg.src = `https://quickchart.io/qr?text=${encodeURIComponent(fullApkUrl)}&size=300`;
 
-      // Configurar Repo GitHub
       const repoUrl = card.getAttribute('data-repo');
       const modalGithubBtn = document.getElementById('modalGithubBtn');
       modalGithubBtn.href = repoUrl;
 
-      // Configurar Logo
       const logoUrl = card.getAttribute('data-logo');
       const iconBox = document.getElementById('modalIcon');
       iconBox.innerHTML = `<img src="${logoUrl}" class="modal-icon-img" alt="Logo">`;
 
-      // Cargar capturas
       const screenshotsContainer = document.getElementById('modalScreenshots');
       screenshotsContainer.innerHTML = '';
       
@@ -129,6 +122,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       modal.style.display = 'flex';
     });
+  });
+
+  modalQrImg.addEventListener('click', (e) => {
+    e.stopPropagation();
+    lightboxImg.src = modalQrImg.src;
+    lightbox.style.display = 'flex';
   });
 
   closeLightbox.addEventListener('click', () => lightbox.style.display = 'none');

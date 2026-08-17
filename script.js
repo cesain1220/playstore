@@ -18,6 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchTerm = searchInput.value.toLowerCase().trim();
     let visibleCount = 0;
 
+    // Mostrar/Ocultar botones según la pestaña activa
+    const apkButtons = document.querySelectorAll('.btn-apk');
+    const repoButtons = document.querySelectorAll('.btn-repo');
+
+    if (currentCategory === 'studio') {
+      apkButtons.forEach(btn => btn.style.display = 'none');
+      repoButtons.forEach(btn => btn.style.display = 'inline-flex');
+    } else {
+      apkButtons.forEach(btn => btn.style.display = 'inline-flex');
+      repoButtons.forEach(btn => btn.style.display = 'none');
+    }
+
     appCards.forEach(card => {
       const categories = card.getAttribute('data-category').split(' ');
       const title = card.getAttribute('data-title').toLowerCase();
@@ -67,12 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Configurar Botón GitHub Repo
       const repoUrl = card.getAttribute('data-repo');
       const modalGithubBtn = document.getElementById('modalGithubBtn');
-      if (repoUrl) {
-        modalGithubBtn.href = repoUrl;
-        modalGithubBtn.style.display = 'inline-flex';
-      } else {
-        modalGithubBtn.style.display = 'none';
-      }
+      modalGithubBtn.href = repoUrl;
 
       // Cargar Logo
       const logoUrl = card.getAttribute('data-logo');
